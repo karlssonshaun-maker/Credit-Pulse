@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  color: #0f172a;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(124, 58, 237, 0.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(79, 70, 229, 0.08), transparent 55%),
+    #f8fafc;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+}
+
+html.dark body {
+  color: #e2e8f0;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(124, 58, 237, 0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(79, 70, 229, 0.18), transparent 55%),
+    #0b1020;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; background-clip: padding-box; border: 2px solid transparent; }
+html.dark ::-webkit-scrollbar-thumb { background: #334155; background-clip: padding-box; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #475569; background-clip: padding-box; }
+
+@layer components {
+  .card {
+    @apply bg-white border border-ink-200/80 rounded-2xl shadow-card
+           dark:bg-ink-900/60 dark:border-ink-800 dark:backdrop-blur;
+  }
+  .card-hover {
+    @apply transition-shadow duration-200 hover:shadow-elevated;
+  }
+  .kbd {
+    @apply inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-medium rounded border
+           border-ink-200 bg-ink-50 text-ink-600
+           dark:border-ink-700 dark:bg-ink-800 dark:text-ink-300;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border;
+  }
+  .input {
+    @apply w-full px-4 py-2.5 bg-white border border-ink-200 rounded-xl text-sm text-ink-900
+           placeholder:text-ink-400
+           focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition
+           dark:bg-ink-900/60 dark:border-ink-700 dark:text-ink-100 dark:placeholder:text-ink-500
+           dark:focus:border-brand-400 dark:focus:ring-brand-400/20;
+  }
+  .label {
+    @apply block text-[11px] font-semibold tracking-wider uppercase text-ink-500 mb-1.5 dark:text-ink-400;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-5 py-2.5 rounded-xl
+           shadow-card hover:shadow-elevated hover:brightness-110 active:brightness-95
+           disabled:opacity-50 disabled:cursor-not-allowed transition;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 bg-white border border-ink-200 text-ink-700 font-medium px-4 py-2 rounded-xl
+           hover:bg-ink-50 hover:border-ink-300 transition
+           dark:bg-ink-900/60 dark:border-ink-700 dark:text-ink-200 dark:hover:bg-ink-800;
+  }
+  .section-title {
+    @apply text-[11px] font-semibold tracking-[0.12em] uppercase text-ink-500 dark:text-ink-400;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent;
+  }
+  .muted {
+    @apply text-ink-500 dark:text-ink-400;
+  }
+  .heading {
+    @apply text-ink-900 dark:text-ink-50;
+  }
+  .body-text {
+    @apply text-ink-700 dark:text-ink-300;
+  }
+  .divider {
+    @apply border-ink-200 dark:border-ink-800;
+  }
+}
+
+@media print {
+  body { background: white !important; color: black !important; }
+  .print\:hidden { display: none !important; }
+}

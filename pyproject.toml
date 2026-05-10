@@ -1,0 +1,16 @@
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["creditpulse/tests"]
+python_files = "test_*.py"
+addopts = "-v --tb=short --cov=creditpulse --cov-report=term-missing"
+
+[tool.coverage.run]
+omit = [
+    "creditpulse/db/migrations/*",
+    "creditpulse/tests/*",
+    "creditpulse/db/seed.py",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
